@@ -9,6 +9,7 @@ Website for Sophie Maria Rabmer, actor and amateur boxer. It's a plain static si
 index.html          The whole one-page site (all sections)
 impressum.html      Impressum (legally required in Austria)
 datenschutz.html    Privacy policy (placeholder, replace it!)
+server/             Contact form script for your own server (not part of the website)
 assets/css/style.css
 assets/js/main.js   Menu, scroll effects, lightbox, contact form
 assets/img/         Images (currently placeholders)
@@ -40,15 +41,30 @@ All text is in `index.html`. Each section is marked with a comment
 - **News:** copy one `<article class="news-item">` block and add it at the top.
 - **Vita PDF:** save it as `assets/vita.pdf`, or delete the link in the "Über mich" section.
 
-## Setting up the contact form
+## Contact form (runs on your own server)
 
-The form uses [Formspree](https://formspree.io) (free for up to 50 messages a month):
+The website is hosted on GitHub Pages, which can't run server code. So the form sends
+its data to `server/contact.php` on your own server, and that script emails it to Sophie.
+It needs PHP 8 or newer and a working `mail()` (sendmail/postfix, standard on most hosts).
 
-1. Create an account and a new form, using Sophie's email address as the recipient.
-2. Put the form ID in `index.html` in place of `YOUR_FORM_ID`
-   (`action="https://formspree.io/f/abcdwxyz"`).
+1. Make the script reachable over **HTTPS**, e.g. at `https://api.sophiemariarabmer.com/contact.php`:
+   add a DNS `A` record for `api` pointing to your server, set up a vhost for it and get a
+   certificate (e.g. `certbot`). Any other domain on your server works too.
+2. Upload `server/contact.php` there, copy `server/config.example.php` next to it as
+   `config.php` and fill in the recipient and sender addresses.
+3. If you use a different URL than the one above, change `action="…"` of the form in `index.html`.
+4. Test it: send a message through the live site.
 
-Until then, the form shows a note asking people to send an email instead.
+What the script does: it only accepts requests from sophiemariarabmer.com, checks the input,
+blocks header injection, has a hidden spam-trap field and a limit of 5 messages per IP address
+per hour. Replies to the notification email go straight to the visitor. It also works without
+JavaScript (the visitor is sent back to the site with a confirmation).
+
+**If mails don't arrive / land in spam:** the sender address (`from` in `config.php`) must be
+on a domain your server is allowed to send for. Add the server's IP to the domain's SPF record,
+or use a sender address on the server's own domain.
+
+`config.php` is in `.gitignore`, and `_config.yml` keeps the `server/` folder off GitHub Pages.
 
 ## Publishing (GitHub Pages + your own domain)
 
@@ -62,6 +78,6 @@ Until then, the form shows a note asking people to send an email instead.
 ## Before going live
 
 - [ ] Real photos, texts and links (Instagram, videos, email address)
-- [ ] Formspree form ID
+- [ ] Contact script set up on the server and tested
 - [ ] Impressum: full address
 - [ ] Datenschutz: a proper privacy policy

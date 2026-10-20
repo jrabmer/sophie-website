@@ -92,16 +92,23 @@ document.querySelectorAll('[data-subject]').forEach((a) => a.addEventListener('c
   if (subject) subject.value = a.dataset.subject;
 }));
 
-// Kontaktformular ohne Seitenwechsel absenden (Formspree)
+// Kontaktformular ohne Seitenwechsel absenden (server/contact.php auf dem eigenen Server)
 const form = document.querySelector('.form');
 if (form) {
   const status = form.querySelector('.form__status');
+  const messages = {
+    ok: 'Danke! Deine Nachricht ist angekommen – ich melde mich bald.',
+    rate_limit: 'Du hast gerade schon einige Nachrichten geschickt. Bitte versuch es später nochmal oder schreib eine E-Mail.',
+    error: 'Das hat leider nicht geklappt. Bitte versuch es nochmal oder schreib eine E-Mail.',
+  };
+
+  // Rückmeldung, wenn das Formular ohne JavaScript abgeschickt wurde (?gesendet=1 / ?fehler=1)
+  const params = new URLSearchParams(location.search);
+  if (params.has('gesendet')) status.textContent = messages.ok;
+  if (params.has('fehler')) status.textContent = messages.error;
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (form.action.includes('YOUR_FORM_ID')) {
-      status.textContent = 'Das Formular ist noch nicht verbunden – bitte vorerst per E-Mail schreiben.';
-      return;
-    }
     const btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
     status.textContent = 'Wird gesendet …';
@@ -111,11 +118,12 @@ if (form) {
         body: new FormData(form),
         headers: { Accept: 'application/json' },
       });
-      if (!res.ok) throw new Error();
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error);
       form.reset();
-      status.textContent = 'Danke! Deine Nachricht ist angekommen – ich melde mich bald.';
-    } catch {
-      status.textContent = 'Das hat leider nicht geklappt. Bitte versuch es nochmal oder schreib eine E-Mail.';
+      status.textContent = messages.ok;
+    } catch (err) {
+      status.textContent = messages[err.message] || messages.error;
     } finally {
       btn.disabled = false;
     }

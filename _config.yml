@@ -1,0 +1,4 @@
+# GitHub Pages: don't publish the server script and docs as part of the website
+exclude:
+  - server
+  - README.md

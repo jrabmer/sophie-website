@@ -208,10 +208,10 @@
       <p class="contact__intro">Seminar, Boxtraining, Casting oder Booking – schreib mir.</p>
 
       <!--
-        Kontaktformular über Formspree (kostenlos, https://formspree.io):
-        Konto anlegen → neues Formular → die ID (z.B. "xyzabcd") unten bei action einsetzen.
+        Kontaktformular: wird an server/contact.php auf dem eigenen Server geschickt.
+        Adresse bei action anpassen, falls das Skript woanders liegt (siehe README.md).
       -->
-      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="form" action="https://api.sophiemariarabmer.com/contact.php" method="POST">
         <div class="form__row">
           <label>Name *<input type="text" name="name" required autocomplete="name"></label>
           <label>E-Mail *<input type="email" name="email" required autocomplete="email"></label>
