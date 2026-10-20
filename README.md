@@ -31,6 +31,9 @@ All text is in `index.html`. Each section is marked with a comment
 - **Images:** replace the files in `assets/img/` with real photos of the **same name**
   (or change the file name in `index.html`). JPGs about 1600–2000 px wide are enough;
   compress them first (e.g. https://squoosh.app).
+- **Image bands:** the two full-width black-and-white strips between sections are
+  `assets/img/band-1.jpg` and `band-2.jpg` (landscape, ~2400 px wide). All photos are shown
+  in black and white automatically, so colour photos are fine.
 - **Add a portrait:** copy one `<a class="gallery__item">…</a>` line and change the file name.
 - **Add a film still:** copy one `<article class="still">…</article>` block. If there is no
   video, delete the "Video ansehen" line.

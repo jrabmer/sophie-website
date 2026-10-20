@@ -17,6 +17,27 @@ if (toggle && menu) {
   menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
 }
 
+// Parallax: Bilder in .parallax bewegen sich langsamer als die Seite
+const parallaxImgs = [...document.querySelectorAll('.parallax img')];
+if (parallaxImgs.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let ticking = false;
+  const update = () => {
+    const vh = window.innerHeight;
+    parallaxImgs.forEach((img) => {
+      const box = img.parentElement.getBoundingClientRect();
+      if (box.bottom < 0 || box.top > vh) return;
+      // -1 (Element unten im Bild) bis 1 (oben) → max. ±12 % der Höhe verschieben
+      const progress = (box.top + box.height / 2 - vh / 2) / (vh / 2 + box.height / 2);
+      img.style.transform = `translate3d(0, ${(-progress * box.height * 0.12).toFixed(1)}px, 0)`;
+    });
+    ticking = false;
+  };
+  const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  window.addEventListener('scroll', request, { passive: true });
+  window.addEventListener('resize', request);
+  update();
+}
+
 // Elemente beim Scrollen einblenden
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => {

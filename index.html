@@ -11,23 +11,24 @@
   <meta property="og:url" content="https://sophiemariarabmer.com/">
   <link rel="canonical" href="https://sophiemariarabmer.com/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
   <!-- ============ NAVIGATION ============ -->
   <header class="nav" id="top">
-    <a href="#top" class="nav__logo">SMR</a>
+    <a href="#top" class="nav__logo" aria-label="Nach oben">SMR</a>
     <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-menu">
       <span></span><span></span>
     </button>
     <nav class="nav__menu" id="nav-menu">
-      <a href="#about">Über mich</a>
-      <a href="#portraits">Portraits</a>
-      <a href="#film">Film</a>
-      <a href="#boxing">Boxen</a>
-      <a href="#news">News</a>
-      <a href="#kontakt" class="nav__cta">Kontakt</a>
+      <a href="#about">über mich.</a>
+      <a href="#portraits">portraits.</a>
+      <a href="#film">film.</a>
+      <a href="#boxen">boxen.</a>
+      <a href="#news">news.</a>
+      <a href="#kontakt">kontakt.</a>
     </nav>
   </header>
 
@@ -35,33 +36,23 @@
 
     <!-- ============ START: BOLD HERO ============ -->
     <section class="hero">
-      <div class="hero__img">
-        <img src="assets/img/hero.jpg" alt="Sophie Maria Rabmer">
+      <div class="hero__bg parallax">
+        <img src="assets/img/hero.jpg" alt="">
       </div>
-      <h1 class="hero__title">
-        <span class="line">Sophie</span>
-        <span class="line">Maria</span>
-        <span class="line line--accent">Rabmer</span>
-      </h1>
-      <div class="hero__meta">
-        <p>Schauspielerin<br>Amateurboxerin</p>
-        <a href="#kontakt" class="btn">Jetzt anfragen</a>
+      <div class="hero__content">
+        <p class="hero__kicker">Schauspielerin · Amateurboxerin</p>
+        <h1 class="hero__title">
+          <span class="line">Sophie</span>
+          <span class="line">Maria</span>
+          <span class="line">Rabmer.</span>
+        </h1>
       </div>
+      <a href="#about" class="hero__down" aria-label="Weiter nach unten"></a>
     </section>
-
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Schauspiel</span><span>✦</span><span>Boxen</span><span>✦</span><span>Seminare</span><span>✦</span><span>Training</span><span>✦</span>
-        <span>Schauspiel</span><span>✦</span><span>Boxen</span><span>✦</span><span>Seminare</span><span>✦</span><span>Training</span><span>✦</span>
-      </div>
-    </div>
 
     <!-- ============ ÜBER MICH ============ -->
     <section class="section about" id="about">
-      <div class="section__head">
-        <span class="section__num">01</span>
-        <h2>Über mich</h2>
-      </div>
+      <h2 class="section__title">über mich.</h2>
       <div class="about__grid">
         <figure class="about__img reveal">
           <img src="assets/img/about.jpg" alt="Sophie Maria Rabmer – Portrait" loading="lazy">
@@ -84,10 +75,7 @@
 
     <!-- ============ PORTRAITS ============ -->
     <section class="section portraits" id="portraits">
-      <div class="section__head">
-        <span class="section__num">02</span>
-        <h2>Portraits</h2>
-      </div>
+      <h2 class="section__title">portraits.</h2>
       <div class="gallery">
         <!-- Neues Foto: einfach eine weitere <a>-Zeile kopieren und den Dateinamen ändern -->
         <a href="assets/img/portrait-1.jpg" class="gallery__item reveal"><img src="assets/img/portrait-1.jpg" alt="Portrait 1" loading="lazy"></a>
@@ -99,67 +87,56 @@
       </div>
     </section>
 
+    <!-- Bildband (Parallax) – Bild austauschen: assets/img/band-1.jpg -->
+    <div class="band parallax" aria-hidden="true"><img src="assets/img/band-1.jpg" alt="" loading="lazy"></div>
+
     <!-- ============ FILM / FILMSTILLS ============ -->
     <section class="section film" id="film">
-      <div class="section__head">
-        <span class="section__num">03</span>
-        <h2>Film</h2>
-      </div>
+      <h2 class="section__title">film.</h2>
       <div class="stills">
         <!-- Ein Filmstill = ein <article>. Ohne Video einfach die Zeile mit "Video ansehen" löschen. -->
         <article class="still reveal">
           <a href="assets/img/still-1.jpg" class="still__img gallery-link"><img src="assets/img/still-1.jpg" alt="Filmstill: Projekttitel 1" loading="lazy"></a>
-          <div class="still__body">
-            <p class="still__meta">Kurzfilm · 2026 · Regie: Name</p>
-            <h3>Projekttitel 1</h3>
-            <p class="still__role">Rolle: Rollenname (Hauptrolle)</p>
-            <p>Kurze Beschreibung des Projekts und der Rolle – ein, zwei Sätze worum es geht.</p>
-            <a href="https://vimeo.com/" class="link-arrow" target="_blank" rel="noopener">Video ansehen</a>
-          </div>
+          <p class="still__meta">Kurzfilm · 2026 · Regie: Name</p>
+          <h3>Projekttitel 1</h3>
+          <p class="still__role">Rolle: Rollenname (Hauptrolle)</p>
+          <p>Kurze Beschreibung des Projekts und der Rolle – ein, zwei Sätze worum es geht.</p>
+          <a href="https://vimeo.com/" class="link-arrow" target="_blank" rel="noopener">Video ansehen</a>
         </article>
         <article class="still reveal">
           <a href="assets/img/still-2.jpg" class="still__img gallery-link"><img src="assets/img/still-2.jpg" alt="Filmstill: Projekttitel 2" loading="lazy"></a>
-          <div class="still__body">
-            <p class="still__meta">Spielfilm · 2025 · Regie: Name</p>
-            <h3>Projekttitel 2</h3>
-            <p class="still__role">Rolle: Rollenname (Nebenrolle)</p>
-            <p>Kurze Beschreibung des Projekts und der Rolle – ein, zwei Sätze worum es geht.</p>
-            <a href="https://youtube.com/" class="link-arrow" target="_blank" rel="noopener">Video ansehen</a>
-          </div>
+          <p class="still__meta">Spielfilm · 2025 · Regie: Name</p>
+          <h3>Projekttitel 2</h3>
+          <p class="still__role">Rolle: Rollenname (Nebenrolle)</p>
+          <p>Kurze Beschreibung des Projekts und der Rolle – ein, zwei Sätze worum es geht.</p>
+          <a href="https://youtube.com/" class="link-arrow" target="_blank" rel="noopener">Video ansehen</a>
         </article>
         <article class="still reveal">
           <a href="assets/img/still-3.jpg" class="still__img gallery-link"><img src="assets/img/still-3.jpg" alt="Filmstill: Projekttitel 3" loading="lazy"></a>
-          <div class="still__body">
-            <p class="still__meta">Serie · 2025 · Regie: Name</p>
-            <h3>Projekttitel 3</h3>
-            <p class="still__role">Rolle: Rollenname (Episodenrolle)</p>
-            <p>Kurze Beschreibung des Projekts und der Rolle. Für dieses Projekt gibt es (noch) kein Video.</p>
-          </div>
+          <p class="still__meta">Serie · 2025 · Regie: Name</p>
+          <h3>Projekttitel 3</h3>
+          <p class="still__role">Rolle: Rollenname (Episodenrolle)</p>
+          <p>Kurze Beschreibung des Projekts und der Rolle. Für dieses Projekt gibt es (noch) kein Video.</p>
         </article>
         <article class="still reveal">
           <a href="assets/img/still-4.jpg" class="still__img gallery-link"><img src="assets/img/still-4.jpg" alt="Filmstill: Projekttitel 4" loading="lazy"></a>
-          <div class="still__body">
-            <p class="still__meta">Werbung · 2024 · Regie: Name</p>
-            <h3>Projekttitel 4</h3>
-            <p class="still__role">Rolle: Rollenname</p>
-            <p>Kurze Beschreibung des Projekts und der Rolle – ein, zwei Sätze worum es geht.</p>
-            <a href="https://vimeo.com/" class="link-arrow" target="_blank" rel="noopener">Video ansehen</a>
-          </div>
+          <p class="still__meta">Werbung · 2024 · Regie: Name</p>
+          <h3>Projekttitel 4</h3>
+          <p class="still__role">Rolle: Rollenname</p>
+          <p>Kurze Beschreibung des Projekts und der Rolle – ein, zwei Sätze worum es geht.</p>
+          <a href="https://vimeo.com/" class="link-arrow" target="_blank" rel="noopener">Video ansehen</a>
         </article>
       </div>
     </section>
 
     <!-- ============ BOXEN ============ -->
-    <section class="section boxing" id="boxing">
-      <div class="boxing__bg">
+    <section class="boxing" id="boxen">
+      <div class="boxing__bg parallax">
         <img src="assets/img/boxing.jpg" alt="" loading="lazy">
       </div>
       <div class="boxing__content">
-        <div class="section__head section__head--light">
-          <span class="section__num">04</span>
-          <h2>Boxen</h2>
-        </div>
-        <p class="boxing__claim reveal">Hands up.<br>Chin down.</p>
+        <h2 class="section__title">boxen.</h2>
+        <p class="boxing__claim reveal">Hands up. Chin down.</p>
         <p class="boxing__text reveal">Platz für den Boxing-Promo-Text: seit wann sie boxt, Verein, Kämpfe, was ihr der Sport bedeutet.</p>
         <ul class="stats reveal">
           <li><strong>00</strong><span>Kämpfe</span></li>
@@ -173,10 +150,7 @@
 
     <!-- ============ ANGEBOTE ============ -->
     <section class="section offers" id="angebote">
-      <div class="section__head">
-        <span class="section__num">05</span>
-        <h2>Angebote</h2>
-      </div>
+      <h2 class="section__title">angebote.</h2>
       <div class="offers__grid">
         <div class="offer reveal">
           <span class="offer__tag">Schauspiel</span>
@@ -195,10 +169,7 @@
 
     <!-- ============ NEWS ============ -->
     <section class="section news" id="news">
-      <div class="section__head">
-        <span class="section__num">06</span>
-        <h2>News</h2>
-      </div>
+      <h2 class="section__title">news.</h2>
       <div class="news__list">
         <!-- Neueste News immer oben einfügen -->
         <article class="news-item reveal">
@@ -228,57 +199,54 @@
       </div>
     </section>
 
+    <!-- Bildband (Parallax) – Bild austauschen: assets/img/band-2.jpg -->
+    <div class="band parallax" aria-hidden="true"><img src="assets/img/band-2.jpg" alt="" loading="lazy"></div>
+
     <!-- ============ KONTAKT ============ -->
     <section class="section contact" id="kontakt">
-      <div class="contact__grid">
-        <div>
-          <div class="section__head">
-            <span class="section__num">07</span>
-            <h2>Kontakt</h2>
-          </div>
-          <p class="lead">Seminar, Boxtraining, Casting oder Booking – schreib mir.</p>
-          <ul class="contact__links">
-            <li><a href="mailto:hallo@sophiemariarabmer.com">hallo@sophiemariarabmer.com</a></li>
-            <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
-          </ul>
-        </div>
+      <h2 class="section__title">kontakt.</h2>
+      <p class="contact__intro">Seminar, Boxtraining, Casting oder Booking – schreib mir.</p>
 
-        <!--
-          Kontaktformular über Formspree (kostenlos, https://formspree.io):
-          Konto anlegen → neues Formular → die ID (z.B. "xyzabcd") unten bei action einsetzen.
-        -->
-        <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <div class="form__row">
-            <label>Name<input type="text" name="name" required autocomplete="name"></label>
-            <label>E-Mail<input type="email" name="email" required autocomplete="email"></label>
-          </div>
-          <label>Anliegen
-            <select name="anliegen" id="subject">
-              <option>Schauspiel-Seminar</option>
-              <option>Boxtraining</option>
-              <option>Casting / Booking</option>
-              <option>Presse</option>
-              <option>Sonstiges</option>
-            </select>
-          </label>
-          <label>Nachricht<textarea name="message" rows="5" required></textarea></label>
-          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
-          <button type="submit" class="btn">Nachricht senden</button>
+      <!--
+        Kontaktformular über Formspree (kostenlos, https://formspree.io):
+        Konto anlegen → neues Formular → die ID (z.B. "xyzabcd") unten bei action einsetzen.
+      -->
+      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form__row">
+          <label>Name *<input type="text" name="name" required autocomplete="name"></label>
+          <label>E-Mail *<input type="email" name="email" required autocomplete="email"></label>
+        </div>
+        <label>Anliegen
+          <select name="anliegen" id="subject">
+            <option>Schauspiel-Seminar</option>
+            <option>Boxtraining</option>
+            <option>Casting / Booking</option>
+            <option>Presse</option>
+            <option>Sonstiges</option>
+          </select>
+        </label>
+        <label>Nachricht *<textarea name="message" rows="5" required></textarea></label>
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form__foot">
           <p class="form__status" role="status" aria-live="polite"></p>
-        </form>
-      </div>
+          <button type="submit" class="btn">Senden</button>
+        </div>
+      </form>
+
+      <ul class="contact__links">
+        <li><a href="mailto:hallo@sophiemariarabmer.com">hallo@sophiemariarabmer.com</a></li>
+        <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
     </section>
 
   </main>
 
   <footer class="footer">
-    <p class="footer__name">Sophie Maria Rabmer</p>
     <nav>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
-      <a href="#top">Nach oben ↑</a>
     </nav>
-    <p class="footer__copy">© <span id="year">2026</span> Sophie Maria Rabmer</p>
+    <p>© <span id="year">2026</span> Sophie Maria Rabmer</p>
   </footer>
 
   <!-- Lightbox -->
